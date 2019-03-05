@@ -7,15 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C459FEB65FA2A25CFD6D12C5 /* libPods-BMIntegrationSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC3487E30D2A69710FD291C /* libPods-BMIntegrationSample.a */; };
+		D92C0BAF2229627B00481C79 /* libBidMachine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D961910D2229588E0057C11A /* libBidMachine.a */; };
+		D92C0BB222297B7400481C79 /* BidMachineBannerCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = D92C0BB122297B7400481C79 /* BidMachineBannerCustomEvent.m */; };
 		D96190F5222957C50057C11A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D96190F4222957C50057C11A /* AppDelegate.m */; };
 		D96190F8222957C50057C11A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D96190F7222957C50057C11A /* ViewController.m */; };
 		D96190FB222957C50057C11A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D96190F9222957C50057C11A /* Main.storyboard */; };
 		D96190FD222957C60057C11A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D96190FC222957C60057C11A /* Assets.xcassets */; };
 		D9619100222957C60057C11A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D96190FE222957C60057C11A /* LaunchScreen.storyboard */; };
 		D9619103222957C60057C11A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D9619102222957C60057C11A /* main.m */; };
+		D96191112229588E0057C11A /* BidMachineAdapterConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = D96191102229588E0057C11A /* BidMachineAdapterConfiguration.m */; };
+		D9F3E420222D4F6200834D16 /* BidMachineInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F3E41F222D4F6200834D16 /* BidMachineInterstitialCustomEvent.m */; };
+		D9F3E428222EA92B00834D16 /* BidMachineInstanceMediationSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F3E427222EA92B00834D16 /* BidMachineInstanceMediationSettings.m */; };
+		E7F24A4B75DDBB1DD2F6FB51 /* libPods-BidMachine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F53D6E15BB359C92B9829A7 /* libPods-BidMachine.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D961910B2229588E0057C11A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		3F53D6E15BB359C92B9829A7 /* libPods-BidMachine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BidMachine.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		418CD903383469A154D6F5D8 /* Pods-BidMachine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BidMachine.release.xcconfig"; path = "Pods/Target Support Files/Pods-BidMachine/Pods-BidMachine.release.xcconfig"; sourceTree = "<group>"; };
+		64ECC43E987F38AEC3CC41CF /* Pods-BMIntegrationSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BMIntegrationSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-BMIntegrationSample/Pods-BMIntegrationSample.release.xcconfig"; sourceTree = "<group>"; };
+		6A3C6C99BED0DF9002A79C36 /* Pods-BidMachine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BidMachine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BidMachine/Pods-BidMachine.debug.xcconfig"; sourceTree = "<group>"; };
+		9FC3487E30D2A69710FD291C /* libPods-BMIntegrationSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BMIntegrationSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2ED3012BD487627BCD216B6 /* Pods-BMIntegrationSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BMIntegrationSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BMIntegrationSample/Pods-BMIntegrationSample.debug.xcconfig"; sourceTree = "<group>"; };
+		D92C0BB022297B7400481C79 /* BidMachineBannerCustomEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidMachineBannerCustomEvent.h; sourceTree = "<group>"; };
+		D92C0BB122297B7400481C79 /* BidMachineBannerCustomEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidMachineBannerCustomEvent.m; sourceTree = "<group>"; };
 		D96190F0222957C50057C11A /* BMIntegrationSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BMIntegrationSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D96190F3222957C50057C11A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D96190F4222957C50057C11A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -26,6 +53,13 @@
 		D96190FF222957C60057C11A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D9619101222957C60057C11A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9619102222957C60057C11A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D961910D2229588E0057C11A /* libBidMachine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBidMachine.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D96191102229588E0057C11A /* BidMachineAdapterConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidMachineAdapterConfiguration.m; sourceTree = "<group>"; };
+		D961911622295D710057C11A /* BidMachineAdapterConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidMachineAdapterConfiguration.h; sourceTree = "<group>"; };
+		D9F3E41E222D4F6200834D16 /* BidMachineInterstitialCustomEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidMachineInterstitialCustomEvent.h; sourceTree = "<group>"; };
+		D9F3E41F222D4F6200834D16 /* BidMachineInterstitialCustomEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidMachineInterstitialCustomEvent.m; sourceTree = "<group>"; };
+		D9F3E426222EA92B00834D16 /* BidMachineInstanceMediationSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidMachineInstanceMediationSettings.h; sourceTree = "<group>"; };
+		D9F3E427222EA92B00834D16 /* BidMachineInstanceMediationSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidMachineInstanceMediationSettings.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +67,50 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D92C0BAF2229627B00481C79 /* libBidMachine.a in Frameworks */,
+				C459FEB65FA2A25CFD6D12C5 /* libPods-BMIntegrationSample.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D961910A2229588E0057C11A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7F24A4B75DDBB1DD2F6FB51 /* libPods-BidMachine.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49B267CE0EED61B6C4E70A60 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9FC3487E30D2A69710FD291C /* libPods-BMIntegrationSample.a */,
+				3F53D6E15BB359C92B9829A7 /* libPods-BidMachine.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9F0FE6DDC606BF0DA191F3EB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A2ED3012BD487627BCD216B6 /* Pods-BMIntegrationSample.debug.xcconfig */,
+				64ECC43E987F38AEC3CC41CF /* Pods-BMIntegrationSample.release.xcconfig */,
+				6A3C6C99BED0DF9002A79C36 /* Pods-BidMachine.debug.xcconfig */,
+				418CD903383469A154D6F5D8 /* Pods-BidMachine.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D96190E7222957C50057C11A = {
 			isa = PBXGroup;
 			children = (
 				D96190F2222957C50057C11A /* BMIntegrationSample */,
+				D961910E2229588E0057C11A /* BidMachine */,
 				D96190F1222957C50057C11A /* Products */,
+				9F0FE6DDC606BF0DA191F3EB /* Pods */,
+				49B267CE0EED61B6C4E70A60 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -51,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				D96190F0222957C50057C11A /* BMIntegrationSample.app */,
+				D961910D2229588E0057C11A /* libBidMachine.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -71,6 +139,21 @@
 			path = BMIntegrationSample;
 			sourceTree = "<group>";
 		};
+		D961910E2229588E0057C11A /* BidMachine */ = {
+			isa = PBXGroup;
+			children = (
+				D961911622295D710057C11A /* BidMachineAdapterConfiguration.h */,
+				D96191102229588E0057C11A /* BidMachineAdapterConfiguration.m */,
+				D92C0BB022297B7400481C79 /* BidMachineBannerCustomEvent.h */,
+				D92C0BB122297B7400481C79 /* BidMachineBannerCustomEvent.m */,
+				D9F3E41E222D4F6200834D16 /* BidMachineInterstitialCustomEvent.h */,
+				D9F3E41F222D4F6200834D16 /* BidMachineInterstitialCustomEvent.m */,
+				D9F3E426222EA92B00834D16 /* BidMachineInstanceMediationSettings.h */,
+				D9F3E427222EA92B00834D16 /* BidMachineInstanceMediationSettings.m */,
+			);
+			path = BidMachine;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -78,9 +161,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D9619106222957C60057C11A /* Build configuration list for PBXNativeTarget "BMIntegrationSample" */;
 			buildPhases = (
+				1AE78C6B14873E031CBB446D /* [CP] Check Pods Manifest.lock */,
 				D96190EC222957C50057C11A /* Sources */,
 				D96190ED222957C50057C11A /* Frameworks */,
 				D96190EE222957C50057C11A /* Resources */,
+				C08509526BB21B9859148630 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -90,6 +175,25 @@
 			productName = BMIntegrationSample;
 			productReference = D96190F0222957C50057C11A /* BMIntegrationSample.app */;
 			productType = "com.apple.product-type.application";
+		};
+		D961910C2229588E0057C11A /* BidMachine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D96191132229588E0057C11A /* Build configuration list for PBXNativeTarget "BidMachine" */;
+			buildPhases = (
+				BD43204F4A5BF00302869BB2 /* [CP] Check Pods Manifest.lock */,
+				D96191092229588E0057C11A /* Sources */,
+				D961910A2229588E0057C11A /* Frameworks */,
+				D961910B2229588E0057C11A /* CopyFiles */,
+				C5A512682A9D272E30A92C50 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BidMachine;
+			productName = BidMachine;
+			productReference = D961910D2229588E0057C11A /* libBidMachine.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -101,6 +205,9 @@
 				ORGANIZATIONNAME = BidMachine;
 				TargetAttributes = {
 					D96190EF222957C50057C11A = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					D961910C2229588E0057C11A = {
 						CreatedOnToolsVersion = 10.1;
 					};
 				};
@@ -119,6 +226,7 @@
 			projectRoot = "";
 			targets = (
 				D96190EF222957C50057C11A /* BMIntegrationSample */,
+				D961910C2229588E0057C11A /* BidMachine */,
 			);
 		};
 /* End PBXProject section */
@@ -136,6 +244,181 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1AE78C6B14873E031CBB446D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BMIntegrationSample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BD43204F4A5BF00302869BB2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BidMachine-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C08509526BB21B9859148630 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BMIntegrationSample/Pods-BMIntegrationSample-resources.sh",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Internal/Common/MPAdBrowserController.xib",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPCloseBtn.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPCloseBtn@2x.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPCloseBtn@3x.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPCloseButtonX.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPCloseButtonX@2x.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPCloseButtonX@3x.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPCountdownTimer.html",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPDAAIcon.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPDAAIcon@2x.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPDAAIcon@3x.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPMutedBtn.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPMutedBtn@2x.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPMutedBtn@3x.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPPlayBtn.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPPlayBtn@2x.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPPlayBtn@3x.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPUnmutedBtn.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPUnmutedBtn@2x.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPUnmutedBtn@3x.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MRAID.bundle",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPAdapters.plist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPAdBrowserController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCloseBtn.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCloseBtn@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCloseBtn@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCloseButtonX.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCloseButtonX@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCloseButtonX@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCountdownTimer.html",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPDAAIcon.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPDAAIcon@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPDAAIcon@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPMutedBtn.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPMutedBtn@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPMutedBtn@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPPlayBtn.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPPlayBtn@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPPlayBtn@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPUnmutedBtn.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPUnmutedBtn@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPUnmutedBtn@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MRAID.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPAdapters.plist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BMIntegrationSample/Pods-BMIntegrationSample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5A512682A9D272E30A92C50 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BidMachine/Pods-BidMachine-resources.sh",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Internal/Common/MPAdBrowserController.xib",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPCloseBtn.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPCloseBtn@2x.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPCloseBtn@3x.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPCloseButtonX.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPCloseButtonX@2x.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPCloseButtonX@3x.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPCountdownTimer.html",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPDAAIcon.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPDAAIcon@2x.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPDAAIcon@3x.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPMutedBtn.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPMutedBtn@2x.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPMutedBtn@3x.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPPlayBtn.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPPlayBtn@2x.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPPlayBtn@3x.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPUnmutedBtn.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPUnmutedBtn@2x.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPUnmutedBtn@3x.png",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MRAID.bundle",
+				"${PODS_ROOT}/mopub-ios-sdk/MoPubSDK/Resources/MPAdapters.plist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPAdBrowserController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCloseBtn.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCloseBtn@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCloseBtn@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCloseButtonX.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCloseButtonX@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCloseButtonX@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPCountdownTimer.html",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPDAAIcon.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPDAAIcon@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPDAAIcon@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPMutedBtn.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPMutedBtn@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPMutedBtn@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPPlayBtn.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPPlayBtn@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPPlayBtn@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPUnmutedBtn.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPUnmutedBtn@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPUnmutedBtn@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MRAID.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MPAdapters.plist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BidMachine/Pods-BidMachine-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D96190EC222957C50057C11A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -144,6 +427,17 @@
 				D96190F8222957C50057C11A /* ViewController.m in Sources */,
 				D9619103222957C60057C11A /* main.m in Sources */,
 				D96190F5222957C50057C11A /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D96191092229588E0057C11A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9F3E428222EA92B00834D16 /* BidMachineInstanceMediationSettings.m in Sources */,
+				D96191112229588E0057C11A /* BidMachineAdapterConfiguration.m in Sources */,
+				D92C0BB222297B7400481C79 /* BidMachineBannerCustomEvent.m in Sources */,
+				D9F3E420222D4F6200834D16 /* BidMachineInterstitialCustomEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +577,7 @@
 		};
 		D9619107222957C60057C11A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2ED3012BD487627BCD216B6 /* Pods-BMIntegrationSample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +595,7 @@
 		};
 		D9619108222957C60057C11A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64ECC43E987F38AEC3CC41CF /* Pods-BMIntegrationSample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -311,6 +607,32 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bidmachine.BMIntegrationSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D96191142229588E0057C11A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A3C6C99BED0DF9002A79C36 /* Pods-BidMachine.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WG4VFF78ZM;
+				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D96191152229588E0057C11A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 418CD903383469A154D6F5D8 /* Pods-BidMachine.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WG4VFF78ZM;
+				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -332,6 +654,15 @@
 			buildConfigurations = (
 				D9619107222957C60057C11A /* Debug */,
 				D9619108222957C60057C11A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D96191132229588E0057C11A /* Build configuration list for PBXNativeTarget "BidMachine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D96191142229588E0057C11A /* Debug */,
+				D96191152229588E0057C11A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
