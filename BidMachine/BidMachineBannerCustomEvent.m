@@ -46,12 +46,13 @@
     }
     [self.bannerRequest setAdSize:bannerAdSize];
     [self.bannerRequest setPriceFloors:[self makePriceFloorsWith:price]];
+    [self.bannerRequest setTargeting:[self setupTargeting]];
     [self.bannerView populateWithRequest:self.bannerRequest];
 }
 
 - (NSArray<BDMPriceFloor *> *)makePriceFloorsWith:(NSNumber *)price {
-    BDMPriceFloor * priceFloor;
-    NSArray<BDMPriceFloor *> * priceFloors = [NSArray new];
+    BDMPriceFloor *priceFloor;
+    NSArray<BDMPriceFloor *> *priceFloors = [NSArray new];
     if (price) {
         priceFloor = [BDMPriceFloor new];
         [priceFloor setID:NSUUID.UUID.UUIDString.lowercaseString];
@@ -61,19 +62,29 @@
     return priceFloors;
 }
 
-//- (BDMTargeting *)setupTargetingWithInfo:(NSDictionary *)info {
-//    BDMTargeting * requestTargeting = [BDMTargeting new];
-//    CLLocation * location = self.delegate.location;
-//    if (location) {
-//        [requestTargeting setDeviceLocation:location];
-//    }
-//    NSString * userId = info[@"userId"];
-//    NSString * gender = info[@"gender"];
-//    NSNumber * yob = info[@"yob"];
-//    NSString * keywords = self.localExtras[@"keywords"];
-//
-//    return requestTargeting;
-//}
+- (BDMTargeting *)setupTargeting{
+    BDMTargeting *requestTargeting = [BDMTargeting new];
+    CLLocation * location = self.delegate.location;
+    if (location) {
+        [requestTargeting setDeviceLocation:location];
+    }
+    if (self.localExtras) {
+        (self.localExtras[@"userId"]) ?: [requestTargeting setUserId:self.localExtras[@"userId"]];
+        (self.localExtras[@"gender"]) ?: [requestTargeting setGender:self.localExtras[@"gender"]];
+        (self.localExtras[@"yob"]) ?: [requestTargeting setYearOfBirth:self.localExtras[@"yob"]];
+        (self.localExtras[@"keywords"]) ?: [requestTargeting setKeywords:self.localExtras[@"keywords"]];
+        (self.localExtras[@"bcat"]) ?: [requestTargeting setBlockedCategories:self.localExtras[@"bcat"]];
+        (self.localExtras[@"badv"]) ?: [requestTargeting setBlockedAdvertisers:self.localExtras[@"badv"]];
+        (self.localExtras[@"bapps"]) ?: [requestTargeting setBlockedApps:self.localExtras[@"bapps"]];
+        (self.localExtras[@"country"]) ?: [requestTargeting setCountry:self.localExtras[@"country"]];
+        (self.localExtras[@"city"]) ?: [requestTargeting setCity:self.localExtras[@"city"]];
+        (self.localExtras[@"zip"]) ?: [requestTargeting setZip:self.localExtras[@"zip"]];
+        (self.localExtras[@"sturl"]) ?: [requestTargeting setStoreURL:self.localExtras[@"sturl"]];
+        (self.localExtras[@"stid"]) ?: [requestTargeting setStoreId:self.localExtras[@"stid"]];
+        (self.localExtras[@"paid"]) ?: [requestTargeting setPaid:self.localExtras[@"paid"]];
+    }
+    return requestTargeting;
+}
 
 #pragma mark - Lazy
 
