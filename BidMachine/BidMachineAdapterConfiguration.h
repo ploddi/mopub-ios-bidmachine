@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <mopub-ios-sdk/MoPub.h>
+#if __has_include(<MoPub/MoPub.h>)
+#import <MoPub/MoPub.h>
+#elif __has_include(<MoPubSDKFramework/MoPub.h>)
+#import <MoPubSDKFramework/MoPub.h>
+#else
+#import "MPBaseAdapterConfiguration.h"
+#endif
+
+NS_ASSUME_NONNULL_BEGIN
 
 @interface BidMachineAdapterConfiguration : MPBaseAdapterConfiguration
 
@@ -17,6 +25,9 @@
 @property (nonatomic, copy, readonly) NSString * networkSdkVersion;
 
 + (void)updateInitializationParameters:(NSDictionary *)parameters;
-- (void)initializeNetworkWithConfiguration:(NSDictionary<NSString *, id> * _Nullable)configuration complete:(void(^ _Nullable)(NSError * _Nullable))complete;
+- (void)initializeNetworkWithConfiguration:(NSDictionary<NSString *, id> * _Nullable)configuration
+                                  complete:(void(^ _Nullable)(NSError * _Nullable))complete;
 
 @end
+
+NS_ASSUME_NONNULL_END
