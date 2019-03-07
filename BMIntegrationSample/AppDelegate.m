@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "BidMachineInstanceMediationSettings.h"
-#import <mopub-ios-sdk/MoPub.h>
 #import <BidMachine/BidMachine.h>
 
 @interface AppDelegate ()
@@ -20,11 +19,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    MPMoPubConfiguration * sdkConfig = [[MPMoPubConfiguration alloc] initWithAdUnitIdForAppInitialization: @"0ac59b0996d947309c33f59d6676399f"];
+    MPMoPubConfiguration *sdkConfig = [[MPMoPubConfiguration alloc] initWithAdUnitIdForAppInitialization: @"0ac59b0996d947309c33f59d6676399f"];
+    [sdkConfig setNetworkConfiguration:@{@"sellerId" : @"1"} forMediationAdapter:@"BidMachineAdapterConfiguration"];
+
     BidMachineInstanceMediationSettings * mediationSettings = [BidMachineInstanceMediationSettings new];
     mediationSettings.sellerId = @"1";
     sdkConfig.globalMediationSettings = [[NSArray alloc] initWithObjects:mediationSettings, nil];
     sdkConfig.loggingLevel = MPLogLevelDebug;
+    [[MoPub sharedInstance] grantConsent];
     [[MoPub sharedInstance] initializeSdkWithConfiguration:sdkConfig completion:^{
         NSLog(@"SDK initialization complete");
     }];

@@ -72,8 +72,6 @@
 - (void)rewardedWillPresent:(nonnull BDMRewarded *)rewarded {
     [self.delegate rewardedVideoWillAppearForCustomEvent:self];
     [self.delegate rewardedVideoDidAppearForCustomEvent:self];
-    // Recording an impression after the reward-based video ad appears on the screen.
-    [self.delegate trackImpression];
     
     MPLogAdEvent([MPLogEvent adWillAppearForAdapter:NSStringFromClass(self.class)], [self getAdNetworkId]);
     MPLogAdEvent([MPLogEvent adShowSuccessForAdapter:NSStringFromClass(self.class)], [self getAdNetworkId]);
