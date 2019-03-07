@@ -7,7 +7,7 @@
 
 ## Build generated
 build/
-DerivedData
+DerivedData/
 
 ## Various settings
 *.pbxuser
@@ -29,30 +29,11 @@ xcuserdata
 *.moved-aside
 *.xcuserstate
 *.xcscmblueprint
-Release/BuildUtilities/node_modules
-Release/BuildUtilities/npm-debug.log
-Release/Appodeal*
-Release/Temp
-Release/+Fat
-Release/+Core
-Release/+Adapters
-Release/+Helper
-Release/+CocoaPods
-Release/Fat
-Release/Core
-Release/Adapters
-Release/Helper
-Release/AdaptersThin
-TEMPORARY_BUILD_CONTAINER
-SandboxLegacy/AppodealSandboxLegacy/AvocarrotSDK.framework
-SandboxLegacy/AppodealSandboxLegacy/Appodeal.bundle
+xcuserdata/
 
 ## Obj-C/Swift specific
 *.hmap
 *.ipa
-
-## Proto models
-Appodeal/APDProtoAPI/appodeal-sdk-api
 
 # CocoaPods
 #
@@ -67,5 +48,4 @@ Pods/
 # Add this line if you want to avoid checking in source code from Carthage dependencies.
 # Carthage/Checkouts
 
-# AppCode
-.idea/
+Carthage/Build
