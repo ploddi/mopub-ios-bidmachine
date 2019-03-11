@@ -7,7 +7,7 @@
 //
 
 #import "BidMachineRewardedVideoCustomEvent.h"
-#import "Factory+Request.h"
+#import "BidMachineFactory+Request.h"
 #import <BidMachine/BidMachine.h>
 
 @interface BidMachineRewardedVideoCustomEvent() <BDMRewardedDelegate>
@@ -20,10 +20,8 @@
 
 - (void)requestRewardedVideoWithCustomEventInfo:(NSDictionary *)info {
     NSNumber *price = info[@"price"];
-    CLLocationDegrees lat = [self.localExtras[@"lat"] doubleValue];
-    CLLocationDegrees lon = [self.localExtras[@"lon"] doubleValue];
-    CLLocation *location = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
-    BDMRewardedRequest *request = [[Factory sharedFactory] rewardedRequestWithLocalExtras:self.localExtras
+    CLLocation *location = self.localExtras[@"location"];
+    BDMRewardedRequest *request = [[BidMachineFactory sharedFactory] rewardedRequestWithLocalExtras:self.localExtras
                                                                                  location:location
                                                                                     price:price];
     [self.rewarded populateWithRequest:request];

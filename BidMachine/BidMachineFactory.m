@@ -1,20 +1,20 @@
 //
-//  Factory.m
+//  BidMachineFactory.m
 //  BidMachine
 //
 //  Created by Yaroslav Skachkov on 3/6/19.
 //  Copyright © 2019 BidMachine. All rights reserved.
 //
 
-#import "Factory.h"
+#import "BidMachineFactory.h"
 
-@implementation Factory
+@implementation BidMachineFactory
 
 + (instancetype)sharedFactory {
-    static Factory * _sharedFactory;
+    static BidMachineFactory * _sharedFactory;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _sharedFactory = Factory.new;
+        _sharedFactory = BidMachineFactory.new;
     });
     return _sharedFactory;
 }
@@ -37,7 +37,7 @@
         (localExtras[@"zip"]) ?: [targeting setZip:localExtras[@"zip"]];
         (localExtras[@"sturl"]) ?: [targeting setStoreURL:localExtras[@"sturl"]];
         (localExtras[@"stid"]) ?: [targeting setStoreId:localExtras[@"stid"]];
-        (localExtras[@"paid"]) ?: [targeting setPaid:localExtras[@"paid"]];
+        (localExtras[@"paid"]) ?: [targeting setPaid:[localExtras[@"paid"] boolValue]];
     }
     return targeting;
 }

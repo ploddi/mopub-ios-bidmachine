@@ -1,5 +1,5 @@
 //
-//  Factory.h
+//  BidMachineFactory.h
 //  BidMachine
 //
 //  Created by Yaroslav Skachkov on 3/6/19.
@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Factory : NSObject
+@interface BidMachineFactory : NSObject
 
 + (instancetype)sharedFactory;
 - (BDMTargeting *)setupTargetingWithLocalExtras:(NSDictionary *)localExtras andLocation:(CLLocation * _Nullable)location;

@@ -1,5 +1,5 @@
 //
-//  Factory+Request.h
+//  BidMachineFactory+Request.h
 //  BidMachine
 //
 //  Created by Yaroslav Skachkov on 3/6/19.
@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Factory.h"
+#import "BidMachineFactory.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Factory (Request)
+@interface BidMachineFactory (Request)
 
 - (BDMBannerRequest *)setupBannerRequestWithSize:(CGSize)size
                                      LocalExtras:(NSDictionary *)extras
@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BDMInterstitialRequest *)interstitialRequestWithLocalExtras:(NSDictionary *)localExtras
                                                       location:(CLLocation *)location
                                                          price:(NSNumber *)price;
+
 - (BDMRewardedRequest *)rewardedRequestWithLocalExtras:(NSDictionary *)localExtras
                                               location:(CLLocation *)location
                                                  price:(NSNumber *)price;

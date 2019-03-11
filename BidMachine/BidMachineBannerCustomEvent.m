@@ -8,7 +8,7 @@
 
 #import "BidMachineBannerCustomEvent.h"
 #import "BidMachineAdapterConfiguration.h"
-#import "Factory+Request.h"
+#import "BidMachineFactory+Request.h"
 
 #import <BidMachine/BidMachine.h>
 
@@ -31,7 +31,7 @@
 - (void)requestAdWithSize:(CGSize)size customEventInfo:(NSDictionary *)info {
     [BidMachineAdapterConfiguration updateInitializationParameters:info];
     NSNumber * price = info[@"price"];
-    BDMBannerRequest * request = [[Factory sharedFactory] setupBannerRequestWithSize:size
+    BDMBannerRequest * request = [[BidMachineFactory sharedFactory] setupBannerRequestWithSize:size
                                                                          LocalExtras:self.localExtras
                                                                             location:self.delegate.location
                                                                                price:price];
@@ -79,7 +79,7 @@
 }
 
 - (void)bannerViewDidDismissScreen:(BDMBannerView *)bannerView {
-    MPLogInfo(@"Banner did dismiss screen");
+    MPLogAdEvent([MPLogEvent adDidDisappear], [self getAdNetworkId]);
     [self.delegate bannerCustomEventDidFinishAction:self];
 }
 

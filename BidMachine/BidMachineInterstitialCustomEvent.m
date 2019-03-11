@@ -7,7 +7,7 @@
 //
 
 #import "BidMachineInterstitialCustomEvent.h"
-#import "Factory+Request.h"
+#import "BidMachineFactory+Request.h"
 #import <BidMachine/BidMachine.h>
 
 @interface BidMachineInterstitialCustomEvent() <BDMInterstitialDelegate>
@@ -20,7 +20,7 @@
 
 - (void)requestInterstitialWithCustomEventInfo:(NSDictionary *)info {
     NSNumber *price = info[@"price"];
-    BDMInterstitialRequest *request = [[Factory sharedFactory] interstitialRequestWithLocalExtras:self.localExtras
+    BDMInterstitialRequest *request = [[BidMachineFactory sharedFactory] interstitialRequestWithLocalExtras:self.localExtras
                                                                               location:self.delegate.location
                                                                                  price:price];
     [self.interstitial populateWithRequest:request];
