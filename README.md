@@ -10,12 +10,18 @@ To initialize BidMachine set your's seller id in MPMoPubConfiguration:
 
 ```
 MPMoPubConfiguration *sdkConfig = [[MPMoPubConfiguration alloc] initWithAdUnitIdForAppInitialization: @"AD_UNIT_ID"];
-[sdkConfig setNetworkConfiguration:@{@"sellerId" : @"YOUR_SELLER_ID"} forMediationAdapter:@"BidMachineAdapterConfiguration"];
+[sdkConfig setNetworkConfiguration:@{@"seller_id" : @"YOUR_SELLER_ID"} forMediationAdapter:@"BidMachineAdapterConfiguration"];
+```
+### Test mode
+
+To setup test mode in BidMachine add to ***sdkConfig*** @"test_mode" : @"true". You ***sdkConfig*** will be similar to what is shown below:
+```
+[sdkConfig setNetworkConfiguration:@{@"seller_id" : @"YOUR_SELLER_ID", @"test_mode" : @"true"} forMediationAdapter:@"BidMachineAdapterConfiguration"];
 ```
 
 ### Transfer targeting data to BidMachine
 
-If you want to transfer targeting information you should use custom event's property ***localExtras*** which represents dictionary.
+If you want to transfer targeting information you can use custom event's property ***localExtras*** which represents dictionary.
 Keys for ***localExtras*** are listed below (Banner and Interstitial):
 
 ```
