@@ -17,7 +17,8 @@
 #import "MPLogging.h"
 #endif
 
-static NSString * const kBidMachineSellerId = @"sellerId";
+static NSString * const kBidMachineSellerId = @"seller_id";
+static NSString * const kBidMachineTestMode = @"test_mode";
 
 static NSString * const kAdapterErrorDomain = @"com.mopub.mopub-ios-sdk.mopub-bidmachine-adapters";
 
@@ -47,11 +48,13 @@ typedef NS_ENUM(NSInteger, BidMachineAdapterErrorCode) {
 
 - (void)initializeNetworkWithConfiguration:(NSDictionary<NSString *,id> *)configuration
                                   complete:(void (^)(NSError *))complete {
-    NSString * sellerId = configuration[kBidMachineSellerId];
+    NSString *sellerId = configuration[kBidMachineSellerId];
+    NSString *testModeEnabled = configuration[kBidMachineTestMode];
     if (sellerId) {
         BDMSdkConfiguration *config = [BDMSdkConfiguration new];
-        [config setTestMode:YES];
-        [[BDMSdk sharedSdk] setRestrictions:[self setupUserRestrictions]];
+        if (testModeEnabled) {
+            [config setTestMode:YES];
+        }
         [[BDMSdk sharedSdk] startSessionWithSellerID:sellerId configuration:config completion:nil];
         if (complete) {
             complete(nil);
@@ -72,24 +75,6 @@ typedef NS_ENUM(NSInteger, BidMachineAdapterErrorCode) {
         NSDictionary * configuration = @{ kBidMachineSellerId: sellerId };
         [BidMachineAdapterConfiguration setCachedInitializationParameters:configuration];
     }
-}
-
-- (BDMUserRestrictions *)setupUserRestrictions {
-    BDMUserRestrictions * restrictions = [BDMUserRestrictions new];
-    switch ([[MoPub sharedInstance] currentConsentStatus]) {
-        case MPConsentStatusDenied:    [restrictions setHasConsent:NO];   break;
-        case MPConsentStatusConsented: [restrictions setHasConsent:YES];  break;
-        default:                                                     break;
-    }
-    [restrictions setHasConsent:[[MoPub sharedInstance] canCollectPersonalInfo]];
-    [restrictions setSubjectToGDPR:[[MoPub sharedInstance] isGDPRApplicable]];
-    
-#warning (setupUserRestrictions) - COPPA setting
-//    [restrictions setCoppa:![[MoPub sharedInstance] canCollectPersonalInfo]];
-#warning (setuoUserRestrictions) - TODO consent string
-//    [restrictions setConsentString:];
-    
-    return restrictions;
 }
 
 @end

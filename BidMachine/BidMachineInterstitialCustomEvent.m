@@ -13,16 +13,28 @@
 @interface BidMachineInterstitialCustomEvent() <BDMInterstitialDelegate>
 
 @property (nonatomic, strong) BDMInterstitial *interstitial;
+@property (nonatomic, strong) NSString *networkId;
 
 @end
 
 @implementation BidMachineInterstitialCustomEvent
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.interstitial.delegate = self;
+        [self getAdNetworkId];
+    }
+    return self;
+}
+
 - (void)requestInterstitialWithCustomEventInfo:(NSDictionary *)info {
-    NSNumber *price = info[@"price"];
-    BDMInterstitialRequest *request = [[BidMachineFactory sharedFactory] interstitialRequestWithLocalExtras:self.localExtras
+    NSMutableDictionary *extraInfo = [[NSMutableDictionary alloc] initWithDictionary:info];
+    [extraInfo addEntriesFromDictionary:self.localExtras];
+    NSArray *priceFloors = extraInfo[@"priceFloors"];
+    BDMInterstitialRequest *request = [[BidMachineFactory sharedFactory] interstitialRequestWithExtraInfo:extraInfo
                                                                               location:self.delegate.location
-                                                                                 price:price];
+                                                                                 priceFloors:priceFloors];
     [self.interstitial populateWithRequest:request];
 }
 
@@ -31,7 +43,10 @@
 }
 
 - (NSString *)getAdNetworkId {
-    return (self.interstitial.auctionInfo) ? self.interstitial.auctionInfo.bidID : @"";
+    if (!self.networkId) {
+        self.networkId = NSUUID.UUID.UUIDString;
+    }
+    return self.networkId;
 }
 
 #pragma mark - Lazy
@@ -46,39 +61,38 @@
 #pragma mark - BDMInterstitialDelegate
 
 - (void)interstitialReadyToPresent:(nonnull BDMInterstitial *)interstitial {
-    MPLogAdEvent([MPLogEvent adLoadSuccessForAdapter:NSStringFromClass(self.class)], [self getAdNetworkId]);
+    MPLogAdEvent([MPLogEvent adLoadSuccessForAdapter:NSStringFromClass(self.class)], [self networkId]);
     [self.delegate interstitialCustomEvent:self didLoadAd:self];
 }
 
 - (void)interstitial:(nonnull BDMInterstitial *)interstitial failedWithError:(nonnull NSError *)error {
-    MPLogAdEvent([MPLogEvent adLoadFailedForAdapter:NSStringFromClass(self.class) error:error], [self getAdNetworkId]);
+    MPLogAdEvent([MPLogEvent adLoadFailedForAdapter:NSStringFromClass(self.class) error:error], [self networkId]);
     [self.delegate interstitialCustomEvent:self didFailToLoadAdWithError:error];
 }
 
 - (void)interstitialWillPresent:(nonnull BDMInterstitial *)interstitial {
-    MPLogAdEvent(MPLogEvent.adShowSuccess, [self getAdNetworkId]);
+    MPLogAdEvent(MPLogEvent.adShowSuccess, [self networkId]);
     [self.delegate interstitialCustomEventWillAppear:self];
     [self.delegate interstitialCustomEventDidAppear:self];
     [self.delegate trackImpression];
-    
-    MPLogAdEvent([MPLogEvent adWillAppearForAdapter:NSStringFromClass(self.class)], [self getAdNetworkId]);
-    MPLogAdEvent([MPLogEvent adShowSuccessForAdapter:NSStringFromClass(self.class)], [self getAdNetworkId]);
-    MPLogAdEvent([MPLogEvent adDidAppearForAdapter:NSStringFromClass(self.class)], [self getAdNetworkId]);
+    MPLogAdEvent([MPLogEvent adWillAppearForAdapter:NSStringFromClass(self.class)], [self networkId]);
+    MPLogAdEvent([MPLogEvent adShowSuccessForAdapter:NSStringFromClass(self.class)], [self networkId]);
+    MPLogAdEvent([MPLogEvent adDidAppearForAdapter:NSStringFromClass(self.class)], [self networkId]);
 }
 
 - (void)interstitial:(nonnull BDMInterstitial *)interstitial failedToPresentWithError:(nonnull NSError *)error {
-    MPLogAdEvent([MPLogEvent adShowFailedForAdapter:NSStringFromClass(self.class) error:error], [self getAdNetworkId]);
+    MPLogAdEvent([MPLogEvent adShowFailedForAdapter:NSStringFromClass(self.class) error:error], [self networkId]);
 }
 
 - (void)interstitialDidDismiss:(nonnull BDMInterstitial *)interstitial {
     [self.delegate interstitialCustomEventDidDisappear:self];
-    MPLogAdEvent([MPLogEvent adDidDisappearForAdapter:NSStringFromClass(self.class)], [self getAdNetworkId]);
+    MPLogAdEvent([MPLogEvent adDidDisappearForAdapter:NSStringFromClass(self.class)], [self networkId]);
 }
 
 - (void)interstitialRecieveUserInteraction:(nonnull BDMInterstitial *)interstitial {
     [self.delegate interstitialCustomEventDidReceiveTapEvent:self];
     [self.delegate interstitialCustomEventWillLeaveApplication:self];
-    MPLogAdEvent([MPLogEvent adTappedForAdapter:NSStringFromClass(self.class)], [self getAdNetworkId]);
+    MPLogAdEvent([MPLogEvent adTappedForAdapter:NSStringFromClass(self.class)], [self networkId]);
 }
 
 @end
