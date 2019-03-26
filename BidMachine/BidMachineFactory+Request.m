@@ -7,15 +7,16 @@
 //
 
 #import "BidMachineFactory+Request.h"
+#import <mopub-ios-sdk/MoPub.h>
 #import <BidMachine/BidMachine.h>
 
 @implementation BidMachineFactory (Request)
 
 - (BDMBannerRequest *)setupBannerRequestWithSize:(CGSize)size
-                                     LocalExtras:(NSDictionary *)localExtras
+                                     extraInfo:(NSDictionary *)extraInfo
                                         location:(CLLocation *)location
-                                           price:(NSNumber *)price {
-    BDMBannerRequest * request = [BDMBannerRequest new];
+                                           priceFloors:(NSArray *)priceFloors {
+    BDMBannerRequest *request = [BDMBannerRequest new];
     BDMBannerAdSize bannerAdSize;
     switch ((int)size.width) {
         case 300: bannerAdSize = BDMBannerAdSize300x250;  break;
@@ -24,36 +25,55 @@
         default: bannerAdSize = BDMBannerAdSizeUnknown;   break;
     }
     [request setAdSize:bannerAdSize];
-    [request setTargeting:[[BidMachineFactory sharedFactory] setupTargetingWithLocalExtras:localExtras andLocation:location]];
-    [request setPriceFloors:[self makePriceFloorsWithPrice:price]];
+    [[BDMSdk sharedSdk] setRestrictions:[self setupUserRestrictionsWithExtraInfo:extraInfo]];
+    [request setTargeting:[[BidMachineFactory sharedFactory] setupTargetingWithExtraInfo:extraInfo andLocation:location]];
+    [request setPriceFloors:[self makePriceFloorsWithPriceFloors:priceFloors]];
     return request;
 }
 
-- (BDMInterstitialRequest *)interstitialRequestWithLocalExtras:(NSDictionary *)localExtras location:(CLLocation *)location price:(NSNumber *)price {
-    BDMInterstitialRequest * request = [BDMInterstitialRequest new];
-    [request setType:BDMFullscreenAdTypeAll];
-    [request setTargeting:[[BidMachineFactory sharedFactory] setupTargetingWithLocalExtras:localExtras andLocation:location]];
-    [request setPriceFloors:[self makePriceFloorsWithPrice:price]];
+- (BDMInterstitialRequest *)interstitialRequestWithExtraInfo:(NSDictionary *)extraInfo
+                                                      location:(CLLocation *)location
+                                                   priceFloors:(NSArray *)priceFloors {
+    BDMInterstitialRequest *request = [BDMInterstitialRequest new];
+    [request setType:[self setupInterstitialAdType:extraInfo[@"ad_content_type"]]];
+    [[BDMSdk sharedSdk] setRestrictions:[self setupUserRestrictionsWithExtraInfo:extraInfo]];
+    [request setTargeting:[[BidMachineFactory sharedFactory] setupTargetingWithExtraInfo:extraInfo andLocation:location]];
+    [request setPriceFloors:[self makePriceFloorsWithPriceFloors:priceFloors]];
     return request;
 }
 
-- (BDMRewardedRequest *)rewardedRequestWithLocalExtras:(NSDictionary *)localExtras location:(CLLocation *)location price:(NSNumber *)price {
-    BDMRewardedRequest * request = [BDMRewardedRequest new];
-    [request setTargeting:[[BidMachineFactory sharedFactory] setupTargetingWithLocalExtras:localExtras andLocation:location]];
-    [request setPriceFloors:[self makePriceFloorsWithPrice:price]];
+- (BDMRewardedRequest *)rewardedRequestWithExtraInfo:(NSDictionary *)extraInfo
+                                              location:(CLLocation *)location
+                                           priceFloors:(NSArray *)priceFloors {
+    BDMRewardedRequest *request = [BDMRewardedRequest new];
+    [[BDMSdk sharedSdk] setRestrictions:[self setupUserRestrictionsWithExtraInfo:extraInfo]];
+    [request setTargeting:[[BidMachineFactory sharedFactory] setupTargetingWithExtraInfo:extraInfo andLocation:location]];
+    [request setPriceFloors:[self makePriceFloorsWithPriceFloors:priceFloors]];
     return request;
 }
 
-- (NSArray<BDMPriceFloor *> *)makePriceFloorsWith:(NSNumber *)price {
-    BDMPriceFloor *priceFloor;
-    NSArray<BDMPriceFloor *> *priceFloors = [NSArray new];
-    if (price) {
-        priceFloor = [BDMPriceFloor new];
-        [priceFloor setID:NSUUID.UUID.UUIDString.lowercaseString];
-        [priceFloor setValue:[NSDecimalNumber decimalNumberWithDecimal:price.decimalValue]];
-        [priceFloors arrayByAddingObject:priceFloor];
+- (BDMUserRestrictions *)setupUserRestrictionsWithExtraInfo:(NSDictionary *)extras {
+    BDMUserRestrictions *restrictions = [BDMUserRestrictions new];
+    [restrictions setHasConsent:[[MoPub sharedInstance] canCollectPersonalInfo]];
+    [restrictions setSubjectToGDPR:[[MoPub sharedInstance] isGDPRApplicable]];
+    [restrictions setCoppa:[extras[@"coppa"] boolValue]];
+    [[BDMSdk sharedSdk] setEnableLogging:[extras[@"logging_enabled"] boolValue]];
+    return restrictions;
+}
+
+- (BDMFullscreenAdType)setupInterstitialAdType:(NSString *)string {
+    BDMFullscreenAdType type;
+    NSString *lowercasedString = [string lowercaseString];
+    if ([lowercasedString isEqualToString:@"all"]) {
+        type = BDMFullscreenAdTypeAll;
+    } else if ([lowercasedString isEqualToString:@"video"]) {
+        type = BDMFullscreenAdTypeVideo;
+    } else if ([lowercasedString isEqualToString:@"static"]) {
+        type = BDMFullsreenAdTypeBanner;
+    } else {
+        type = BDMFullscreenAdTypeAll;
     }
-    return priceFloors;
+    return type;
 }
 
 @end

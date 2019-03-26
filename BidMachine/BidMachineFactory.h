@@ -14,8 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface BidMachineFactory : NSObject
 
 + (instancetype)sharedFactory;
-- (BDMTargeting *)setupTargetingWithLocalExtras:(NSDictionary *)localExtras andLocation:(CLLocation * _Nullable)location;
-- (NSArray<BDMPriceFloor *> *)makePriceFloorsWithPrice:(NSNumber *)price;
+- (BDMTargeting *)setupTargetingWithExtraInfo:(NSDictionary *)extraInfo andLocation:(CLLocation * _Nullable)location;
+- (NSArray<BDMPriceFloor *> *)makePriceFloorsWithPriceFloors:(NSArray *)priceFloors;
 
 @end
 
