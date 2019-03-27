@@ -14,17 +14,17 @@ NS_ASSUME_NONNULL_BEGIN
 @interface BidMachineFactory (Request)
 
 - (BDMBannerRequest *)setupBannerRequestWithSize:(CGSize)size
-                                     LocalExtras:(NSDictionary *)extras
-                                        location:(CLLocation * _Nullable)location
-                                           price:(NSNumber *)price;
+                                     extraInfo:(NSDictionary *)extraInfo
+                                        location:(CLLocation *)location
+                                     priceFloors:(NSArray *)priceFloors;
 
-- (BDMInterstitialRequest *)interstitialRequestWithLocalExtras:(NSDictionary *)localExtras
+- (BDMInterstitialRequest *)interstitialRequestWithExtraInfo:(NSDictionary *)extraInfo
                                                       location:(CLLocation *)location
-                                                         price:(NSNumber *)price;
+                                                   priceFloors:(NSArray *)priceFloors;
 
-- (BDMRewardedRequest *)rewardedRequestWithLocalExtras:(NSDictionary *)localExtras
+- (BDMRewardedRequest *)rewardedRequestWithExtraInfo:(NSDictionary *)extraInfo
                                               location:(CLLocation *)location
-                                                 price:(NSNumber *)price;
+                                           priceFloors:(NSArray *)priceFloors;
 
 @end
 

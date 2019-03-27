@@ -15,6 +15,7 @@
 @interface BidMachineBannerCustomEvent() <BDMBannerDelegate>
 
 @property (nonatomic, strong) BDMBannerView *bannerView;
+@property (nonatomic, strong) NSString *networkId;
 
 @end
 
@@ -24,17 +25,20 @@
     self = [super init];
     if (self) {
         self.bannerView.delegate = self;
+        [self getAdNetworkId];
     }
     return self;
 }
 
 - (void)requestAdWithSize:(CGSize)size customEventInfo:(NSDictionary *)info {
-    [BidMachineAdapterConfiguration updateInitializationParameters:info];
-    NSNumber * price = info[@"price"];
-    BDMBannerRequest * request = [[BidMachineFactory sharedFactory] setupBannerRequestWithSize:size
-                                                                         LocalExtras:self.localExtras
-                                                                            location:self.delegate.location
-                                                                               price:price];
+    NSMutableDictionary *extraInfo = self.localExtras ? [self.localExtras mutableCopy] : [NSMutableDictionary new];
+    [extraInfo addEntriesFromDictionary:info];
+    NSArray *priceFloors = extraInfo[@"priceFloors"];
+    BDMBannerRequest *request = [[BidMachineFactory sharedFactory] setupBannerRequestWithSize:size
+                                                                                    extraInfo:extraInfo
+                                                                                     location:self.delegate.location
+                                                                                  priceFloors:priceFloors];
+    [self.bannerView setFrame:CGRectMake(0, 0, size.width, size.height)];
     [self.bannerView populateWithRequest:request];
 }
 
@@ -48,38 +52,44 @@
 }
 
 - (NSString *)getAdNetworkId {
-    return (self.bannerView.latestAuctionInfo) ? self.bannerView.latestAuctionInfo.bidID : @"";
+    if (!self.networkId) {
+        self.networkId = NSUUID.UUID.UUIDString;
+    }
+    return self.networkId;
 }
 
 #pragma mark - BDMBannerDelegate
 
 - (void)bannerViewReadyToPresent:(nonnull BDMBannerView *)bannerView {
-    MPLogAdEvent([MPLogEvent adLoadSuccessForAdapter:NSStringFromClass(self.class)], [self getAdNetworkId]);
-    MPLogAdEvent([MPLogEvent adWillAppearForAdapter:NSStringFromClass(self.class)], [self getAdNetworkId]);
-    MPLogAdEvent([MPLogEvent adShowAttemptForAdapter:NSStringFromClass(self.class)], [self getAdNetworkId]);
+    MPLogAdEvent([MPLogEvent adLoadSuccessForAdapter:NSStringFromClass(self.class)], [self networkId]);
+    MPLogAdEvent([MPLogEvent adWillAppearForAdapter:NSStringFromClass(self.class)], [self networkId]);
+    MPLogAdEvent([MPLogEvent adShowAttemptForAdapter:NSStringFromClass(self.class)], [self networkId]);
     [self.delegate bannerCustomEvent:self didLoadAd:bannerView];
 }
 
 - (void)bannerView:(nonnull BDMBannerView *)bannerView failedWithError:(nonnull NSError *)error {
-    MPLogAdEvent([MPLogEvent adLoadFailedForAdapter:NSStringFromClass(self.class) error:error], [self getAdNetworkId]);
+    MPLogAdEvent([MPLogEvent adLoadFailedForAdapter:NSStringFromClass(self.class) error:error], [self networkId]);
     [self.delegate bannerCustomEvent:self didFailToLoadAdWithError:error];
 }
 
 - (void)bannerViewRecieveUserInteraction:(nonnull BDMBannerView *)bannerView {
-    MPLogAdEvent([MPLogEvent adTappedForAdapter:NSStringFromClass(self.class)], [self getAdNetworkId]);
+    MPLogAdEvent([MPLogEvent adTappedForAdapter:NSStringFromClass(self.class)], [self networkId]);
 }
 
 - (void)bannerViewWillLeaveApplication:(BDMBannerView *)bannerView {
-    MPLogAdEvent([MPLogEvent adWillLeaveApplication], [self getAdNetworkId]);
+    MPLogAdEvent([MPLogEvent adWillLeaveApplication], [self networkId]);
     [self.delegate bannerCustomEventWillLeaveApplication:self];
 }
 
 - (void)bannerViewWillPresentScreen:(BDMBannerView *)bannerView {
+    MPLogInfo(@"Banner with id:%@ - Will present internal view.", [self networkId]);
+    MPLogAdEvent([MPLogEvent adWillPresentModalForAdapter:NSStringFromClass(self.class)], [self networkId]);
     [self.delegate bannerCustomEventWillBeginAction:self];
 }
 
 - (void)bannerViewDidDismissScreen:(BDMBannerView *)bannerView {
-    MPLogAdEvent([MPLogEvent adDidDisappear], [self getAdNetworkId]);
+    MPLogInfo(@"Banner with id:%@ - Will dismiss internal view.", [self networkId]);
+    MPLogAdEvent([MPLogEvent adDidDismissModalForAdapter:NSStringFromClass(self.class)], [self networkId]);
     [self.delegate bannerCustomEventDidFinishAction:self];
 }
 
