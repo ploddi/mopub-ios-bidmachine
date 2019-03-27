@@ -20,11 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     MPMoPubConfiguration *sdkConfig = [[MPMoPubConfiguration alloc] initWithAdUnitIdForAppInitialization: @"1832ce06de91424f8f81f9f5c77f7efd"];
-    [sdkConfig setNetworkConfiguration:@{@"seller_id" : @"1", @"test_mode" : @"true"} forMediationAdapter:@"BidMachineAdapterConfiguration"];
-
-//    BidMachineInstanceMediationSettings * mediationSettings = [BidMachineInstanceMediationSettings new];
-//    mediationSettings.sellerId = @"1";
-//    sdkConfig.globalMediationSettings = [[NSArray alloc] initWithObjects:mediationSettings, nil];
+    [sdkConfig setNetworkConfiguration:@{@"seller_id" : @"1", @"test_mode" : @"true", @"logging_enabled" : @"true"} forMediationAdapter:@"BidMachineAdapterConfiguration"];
     sdkConfig.loggingLevel = MPLogLevelDebug;
     [[MoPub sharedInstance] grantConsent];
     [[MoPub sharedInstance] initializeSdkWithConfiguration:sdkConfig completion:^{
