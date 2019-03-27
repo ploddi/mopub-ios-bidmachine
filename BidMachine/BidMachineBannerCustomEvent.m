@@ -38,6 +38,7 @@
                                                                                     extraInfo:extraInfo
                                                                                      location:self.delegate.location
                                                                                   priceFloors:priceFloors];
+    [self.bannerView setFrame:CGRectMake(0, 0, size.width, size.height)];
     [self.bannerView populateWithRequest:request];
 }
 
