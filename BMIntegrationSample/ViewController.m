@@ -24,13 +24,15 @@
 }
 
 - (IBAction)loadAdButtonTapped:(id)sender {
+    if (self.adView) {
+        [self.adView removeFromSuperview];
+    }
     self.adView = [[MPAdView alloc] initWithAdUnitId:@"1832ce06de91424f8f81f9f5c77f7efd"
                                                 size:MOPUB_BANNER_SIZE];
     self.adView.delegate = self;
     self.adView.frame = CGRectMake((self.view.bounds.size.width - MOPUB_BANNER_SIZE.width) / 2,
-                                   self.view.bounds.size.height - MOPUB_BANNER_SIZE.height,
+                                   (self.view.bounds.size.height - MOPUB_BANNER_SIZE.height) / 3,
                                    MOPUB_BANNER_SIZE.width, MOPUB_BANNER_SIZE.height);
-    [self.view addSubview:self.adView];
     NSDictionary *localExtras = @{
                                   @"seller_id": @"1",
                                   @"coppa": @"true",
@@ -93,7 +95,6 @@
                                   };
     [self.interstitial setLocalExtras:localExtras];
     [self.interstitial loadAd];
-    [self.interstitial showFromViewController:self];
 }
 
 - (IBAction)loadRewardedButtonTapped:(id)sender {
@@ -125,7 +126,6 @@
                                                     ]
                                   };
     [MPRewardedVideo loadRewardedVideoAdWithAdUnitID:@"b94009cbb6b7441eb097142f1cb5e642" keywords:nil userDataKeywords:nil location:nil customerId:nil mediationSettings:nil localExtras:localExtras];
-    [MPRewardedVideo presentRewardedVideoAdForAdUnitID:@"b94009cbb6b7441eb097142f1cb5e642" fromViewController:self withReward:nil];
 }
 
 - (UIViewController *)viewControllerForPresentingModalView {
@@ -134,6 +134,7 @@
 
 - (void)adViewDidLoadAd:(MPAdView *)view {
     NSLog(@"Banner was loaded!");
+    [self.view addSubview:self.adView];
 }
 
 - (void)adViewDidFailToLoadAd:(MPAdView *)view {
@@ -142,6 +143,11 @@
 
 - (void)rewardedVideoAdDidLoadForAdUnitID:(NSString *)adUnitID {
     NSLog(@"Rewarded video did load ad for ad unit id %@", adUnitID);
+    [MPRewardedVideo presentRewardedVideoAdForAdUnitID:@"b94009cbb6b7441eb097142f1cb5e642" fromViewController:self withReward:nil];
+}
+
+- (void)interstitialDidLoadAd:(MPInterstitialAdController *)interstitial {
+    [self.interstitial showFromViewController:self];
 }
 
 @end
