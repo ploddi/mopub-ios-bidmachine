@@ -19,6 +19,7 @@
 
 static NSString * const kBidMachineSellerId = @"seller_id";
 static NSString * const kBidMachineTestMode = @"test_mode";
+static NSString * const kBidMachineLoggingEnabled = @"logging_enabled";
 
 static NSString * const kAdapterErrorDomain = @"com.mopub.mopub-ios-sdk.mopub-bidmachine-adapters";
 
@@ -49,11 +50,15 @@ typedef NS_ENUM(NSInteger, BidMachineAdapterErrorCode) {
 - (void)initializeNetworkWithConfiguration:(NSDictionary<NSString *,id> *)configuration
                                   complete:(void (^)(NSError *))complete {
     NSString *sellerId = configuration[kBidMachineSellerId];
-    NSString *testModeEnabled = configuration[kBidMachineTestMode];
+    BOOL testModeEnabled = [configuration[kBidMachineTestMode] boolValue];
+    BOOL loggingEnabled = [configuration[kBidMachineLoggingEnabled] boolValue];
     if (sellerId) {
         BDMSdkConfiguration *config = [BDMSdkConfiguration new];
         if (testModeEnabled) {
             [config setTestMode:YES];
+        }
+        if (loggingEnabled) {
+            [[BDMSdk sharedSdk] setEnableLogging:YES];
         }
         [[BDMSdk sharedSdk] startSessionWithSellerID:sellerId configuration:config completion:nil];
         if (complete) {
