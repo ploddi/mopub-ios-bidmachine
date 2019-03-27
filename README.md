@@ -18,12 +18,33 @@ To setup test mode in BidMachine add to ***sdkConfig*** @"test_mode" : @"true". 
 ```
 [sdkConfig setNetworkConfiguration:@{@"seller_id" : @"YOUR_SELLER_ID", @"test_mode" : @"true"} forMediationAdapter:@"BidMachineAdapterConfiguration"];
 ```
+### Logging
+
+To setup logging in BidMachine add @"logging_enabled" : @"true" flag to ***sdkConfig***:
+```
+[sdkConfig setNetworkConfiguration:@{@"seller_id" : @"YOUR_SELLER_ID", @"logging_enabled" : @"true"} forMediationAdapter:@"BidMachineAdapterConfiguration"];
+```
 ### Initialization
+
+All parameters that are used during initialization are presented in table below:
+
+| Parameter | Type |
+| --- | --- |
+| **Required** |
+| seller_id | String |
+| **Optional** |
+| test_mode | String |
+| logging_enabled | String|
 
 Yours implementation of initialization should look like this:
 ```
  MPMoPubConfiguration *sdkConfig = [[MPMoPubConfiguration alloc] initWithAdUnitIdForAppInitialization: @"AD_UNIT_ID"];
-    [sdkConfig setNetworkConfiguration:@{@"seller_id" : @"1", @"test_mode" : @"true"} forMediationAdapter:@"BidMachineAdapterConfiguration"];
+ NSDictionary *configurationParams = @{
+                                       @"seller_id" : @"1",
+                                       @"test_mode" : @"true",
+                                       @"logging_enabled" : @"true"
+                                       };
+    [sdkConfig setNetworkConfiguration:configurationParams forMediationAdapter:@"BidMachineAdapterConfiguration"];
     sdkConfig.loggingLevel = MPLogLevelDebug;
     [[MoPub sharedInstance] grantConsent];
     [[MoPub sharedInstance] initializeSdkWithConfiguration:sdkConfig completion:^{
