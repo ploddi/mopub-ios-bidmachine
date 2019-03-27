@@ -201,7 +201,7 @@ Servers extra data:
 With local extra data:
 
 ```
-[MPRewardedVideo setDelegate:self forAdUnitId:@"b94009cbb6b7441eb097142f1cb5e642"];
+[MPRewardedVideo setDelegate:self forAdUnitId:@"AD_UNIT_ID"];
     NSDictionary *localExtras = @{@"seller_id": @"1",
                                   @"coppa": @"true",
                                   @"logging_enabled": @"true",
@@ -227,8 +227,8 @@ With local extra data:
                                                     @1002
                                                     ]
                                   };
-    [MPRewardedVideo loadRewardedVideoAdWithAdUnitID:@"b94009cbb6b7441eb097142f1cb5e642" keywords:nil userDataKeywords:nil location:nil customerId:nil mediationSettings:nil localExtras:localExtras];
-    [MPRewardedVideo presentRewardedVideoAdForAdUnitID:@"b94009cbb6b7441eb097142f1cb5e642" fromViewController:self withReward:nil];
+    [MPRewardedVideo loadRewardedVideoAdWithAdUnitID:@"AD_UNIT_ID" keywords:nil userDataKeywords:nil location:nil customerId:nil mediationSettings:nil localExtras:localExtras];
+    [MPRewardedVideo presentRewardedVideoAdForAdUnitID:@"AD_UNIT_ID" fromViewController:self withReward:nil];
 ```
 
 Extra data from server:
