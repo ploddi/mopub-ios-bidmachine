@@ -29,13 +29,13 @@
 }
 
 - (void)requestRewardedVideoWithCustomEventInfo:(NSDictionary *)info {
-    NSMutableDictionary *extraInfo = [[NSMutableDictionary alloc] initWithDictionary:info];
-    [extraInfo addEntriesFromDictionary:self.localExtras];
+    NSMutableDictionary *extraInfo = self.localExtras ? [self.localExtras mutableCopy] : [NSMutableDictionary new];
+    [extraInfo addEntriesFromDictionary:info];
     NSArray *priceFloors = extraInfo[@"priceFloors"];
     CLLocation *location = self.localExtras[@"location"];
     BDMRewardedRequest *request = [[BidMachineFactory sharedFactory] rewardedRequestWithExtraInfo:extraInfo
-                                                                                 location:location
-                                                                                    priceFloors:priceFloors];
+                                                                                         location:location
+                                                                                      priceFloors:priceFloors];
     [self.rewarded populateWithRequest:request];
 }
 

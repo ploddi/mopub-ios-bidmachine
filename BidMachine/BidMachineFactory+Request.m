@@ -13,9 +13,9 @@
 @implementation BidMachineFactory (Request)
 
 - (BDMBannerRequest *)setupBannerRequestWithSize:(CGSize)size
-                                     extraInfo:(NSDictionary *)extraInfo
+                                       extraInfo:(NSDictionary *)extraInfo
                                         location:(CLLocation *)location
-                                           priceFloors:(NSArray *)priceFloors {
+                                     priceFloors:(NSArray *)priceFloors {
     BDMBannerRequest *request = [BDMBannerRequest new];
     BDMBannerAdSize bannerAdSize;
     switch ((int)size.width) {
@@ -32,8 +32,8 @@
 }
 
 - (BDMInterstitialRequest *)interstitialRequestWithExtraInfo:(NSDictionary *)extraInfo
-                                                      location:(CLLocation *)location
-                                                   priceFloors:(NSArray *)priceFloors {
+                                                    location:(CLLocation *)location
+                                                 priceFloors:(NSArray *)priceFloors {
     BDMInterstitialRequest *request = [BDMInterstitialRequest new];
     [request setType:[self setupInterstitialAdType:extraInfo[@"ad_content_type"]]];
     [[BDMSdk sharedSdk] setRestrictions:[self setupUserRestrictionsWithExtraInfo:extraInfo]];
@@ -43,8 +43,8 @@
 }
 
 - (BDMRewardedRequest *)rewardedRequestWithExtraInfo:(NSDictionary *)extraInfo
-                                              location:(CLLocation *)location
-                                           priceFloors:(NSArray *)priceFloors {
+                                            location:(CLLocation *)location
+                                         priceFloors:(NSArray *)priceFloors {
     BDMRewardedRequest *request = [BDMRewardedRequest new];
     [[BDMSdk sharedSdk] setRestrictions:[self setupUserRestrictionsWithExtraInfo:extraInfo]];
     [request setTargeting:[[BidMachineFactory sharedFactory] setupTargetingWithExtraInfo:extraInfo andLocation:location]];

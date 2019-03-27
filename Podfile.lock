@@ -1,0 +1,30 @@
+PODS:
+  - BidMachine (1.0.3)
+  - mopub-ios-sdk (5.6.0):
+    - mopub-ios-sdk/MoPubSDK (= 5.6.0)
+  - mopub-ios-sdk/Avid (5.6.0):
+    - mopub-ios-sdk/Core
+  - mopub-ios-sdk/Core (5.6.0)
+  - mopub-ios-sdk/Moat (5.6.0):
+    - mopub-ios-sdk/Core
+  - mopub-ios-sdk/MoPubSDK (5.6.0):
+    - mopub-ios-sdk/Avid
+    - mopub-ios-sdk/Core
+    - mopub-ios-sdk/Moat
+
+DEPENDENCIES:
+  - BidMachine (~> 1.0)
+  - mopub-ios-sdk
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - BidMachine
+    - mopub-ios-sdk
+
+SPEC CHECKSUMS:
+  BidMachine: 4ba60d24144b821046e72c58f77f143fc6a004ca
+  mopub-ios-sdk: 2b13b29ed6d1b06f7e52dd0c0a01e7adb749c1a7
+
+PODFILE CHECKSUM: 4bb8d3e30e2b436fb47630810a916203422d65f3
+
+COCOAPODS: 1.5.3

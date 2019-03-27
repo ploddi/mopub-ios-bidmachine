@@ -29,12 +29,12 @@
 }
 
 - (void)requestInterstitialWithCustomEventInfo:(NSDictionary *)info {
-    NSMutableDictionary *extraInfo = [[NSMutableDictionary alloc] initWithDictionary:info];
-    [extraInfo addEntriesFromDictionary:self.localExtras];
+    NSMutableDictionary *extraInfo = self.localExtras ? [self.localExtras mutableCopy] : [NSMutableDictionary new];
+    [extraInfo addEntriesFromDictionary:info];
     NSArray *priceFloors = extraInfo[@"priceFloors"];
     BDMInterstitialRequest *request = [[BidMachineFactory sharedFactory] interstitialRequestWithExtraInfo:extraInfo
-                                                                              location:self.delegate.location
-                                                                                 priceFloors:priceFloors];
+                                                                                                 location:self.delegate.location
+                                                                                              priceFloors:priceFloors];
     [self.interstitial populateWithRequest:request];
 }
 

@@ -10,6 +10,7 @@
 #import <mopub-ios-sdk/MoPub.h>
 
 @interface ViewController () <MPAdViewDelegate, MPInterstitialAdControllerDelegate, MPRewardedVideoDelegate>
+
 @property (nonatomic, strong) MPAdView *adView;
 @property (nonatomic, strong) MPInterstitialAdController *interstitial;
 @property (nonatomic, strong) MPRewardedVideo *rewarded;
@@ -30,7 +31,8 @@
                                    self.view.bounds.size.height - MOPUB_BANNER_SIZE.height,
                                    MOPUB_BANNER_SIZE.width, MOPUB_BANNER_SIZE.height);
     [self.view addSubview:self.adView];
-    NSDictionary *localExtras = @{@"seller_id": @"1",
+    NSDictionary *localExtras = @{
+                                  @"seller_id": @"1",
                                   @"coppa": @"true",
                                   @"logging_enabled": @"true",
                                   @"test_mode": @"true",
@@ -96,7 +98,8 @@
 
 - (IBAction)loadRewardedButtonTapped:(id)sender {
     [MPRewardedVideo setDelegate:self forAdUnitId:@"b94009cbb6b7441eb097142f1cb5e642"];
-    NSDictionary *localExtras = @{@"seller_id": @"1",
+    NSDictionary *localExtras = @{
+                                  @"seller_id": @"1",
                                   @"coppa": @"true",
                                   @"logging_enabled": @"true",
                                   @"test_mode": @"true",

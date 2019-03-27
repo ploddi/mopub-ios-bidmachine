@@ -54,20 +54,17 @@ typedef NS_ENUM(NSInteger, BidMachineAdapterErrorCode) {
     BOOL loggingEnabled = [configuration[kBidMachineLoggingEnabled] boolValue];
     if (sellerId) {
         BDMSdkConfiguration *config = [BDMSdkConfiguration new];
-        if (testModeEnabled) {
-            [config setTestMode:YES];
-        }
-        if (loggingEnabled) {
-            [[BDMSdk sharedSdk] setEnableLogging:YES];
-        }
+        [config setTestMode:testModeEnabled];
+        [[BDMSdk sharedSdk] setEnableLogging:loggingEnabled];
         [[BDMSdk sharedSdk] startSessionWithSellerID:sellerId configuration:config completion:nil];
         if (complete) {
             complete(nil);
         }
     } else {
-        NSError * error = [NSError errorWithDomain:kAdapterErrorDomain code:BidMachineAdapterErrorCodeMissingSellerId userInfo:@{ NSLocalizedDescriptionKey: @"BidMachine's initialization skipped. The sellerId is empty. Ensure it is properly configured on the MoPub dashboard."} ];
+        NSError * error = [NSError errorWithDomain:kAdapterErrorDomain
+                                              code:BidMachineAdapterErrorCodeMissingSellerId
+                                          userInfo:@{ NSLocalizedDescriptionKey: @"BidMachine's initialization skipped. The sellerId is empty. Ensure it is properly configured on the MoPub dashboard."} ];
         MPLogEvent([MPLogEvent error:error message:nil]);
-        
         if (complete) {
             complete(error);
         }

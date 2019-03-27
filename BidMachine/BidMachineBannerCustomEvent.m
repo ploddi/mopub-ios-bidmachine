@@ -31,13 +31,13 @@
 }
 
 - (void)requestAdWithSize:(CGSize)size customEventInfo:(NSDictionary *)info {
-    NSMutableDictionary *extraInfo = [[NSMutableDictionary alloc] initWithDictionary:info];
-    [extraInfo addEntriesFromDictionary:self.localExtras];
+    NSMutableDictionary *extraInfo = self.localExtras ? [self.localExtras mutableCopy] : [NSMutableDictionary new];
+    [extraInfo addEntriesFromDictionary:info];
     NSArray *priceFloors = extraInfo[@"priceFloors"];
     BDMBannerRequest *request = [[BidMachineFactory sharedFactory] setupBannerRequestWithSize:size
-                                                                         extraInfo:extraInfo
-                                                                            location:self.delegate.location
-                                                                               priceFloors:priceFloors];
+                                                                                    extraInfo:extraInfo
+                                                                                     location:self.delegate.location
+                                                                                  priceFloors:priceFloors];
     [self.bannerView populateWithRequest:request];
 }
 
