@@ -31,6 +31,7 @@
 }
 
 - (void)requestAdWithSize:(CGSize)size customEventInfo:(NSDictionary *)info {
+    [[BidMachineFactory sharedFactory] initializeBidMachineSDKWithCustomEventInfo:info];
     NSMutableDictionary *extraInfo = self.localExtras ? [self.localExtras mutableCopy] : [NSMutableDictionary new];
     [extraInfo addEntriesFromDictionary:info];
     NSArray *priceFloors = extraInfo[@"priceFloors"];

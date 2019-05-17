@@ -7,6 +7,8 @@
 //
 
 #import "BidMachineAdapterConfiguration.h"
+#import "BidMachineConstants.h"
+#import "BidMachineFactory.h"
 
 #if __has_include(<BidMachine/BidMachine.h>)
 #import <BidMachine/BidMachine.h>
@@ -17,15 +19,6 @@
 #import "MPLogging.h"
 #endif
 
-static NSString * const kBidMachineSellerId = @"seller_id";
-static NSString * const kBidMachineTestMode = @"test_mode";
-static NSString * const kBidMachineLoggingEnabled = @"logging_enabled";
-
-static NSString * const kAdapterErrorDomain = @"com.mopub.mopub-ios-sdk.mopub-bidmachine-adapters";
-
-typedef NS_ENUM(NSInteger, BidMachineAdapterErrorCode) {
-    BidMachineAdapterErrorCodeMissingSellerId,
-};
 
 @implementation BidMachineAdapterConfiguration
 
@@ -56,7 +49,10 @@ typedef NS_ENUM(NSInteger, BidMachineAdapterErrorCode) {
         BDMSdkConfiguration *config = [BDMSdkConfiguration new];
         [config setTestMode:testModeEnabled];
         [[BDMSdk sharedSdk] setEnableLogging:loggingEnabled];
-        [[BDMSdk sharedSdk] startSessionWithSellerID:sellerId configuration:config completion:nil];
+        [[BDMSdk sharedSdk] startSessionWithSellerID:sellerId configuration:config completion:^{
+            MPLogInfo(@"BidMachine SDK was successfully initialized!");
+            [[BidMachineFactory sharedFactory] setIsSDKInitialized:YES];
+        }];
         if (complete) {
             complete(nil);
         }
@@ -65,6 +61,7 @@ typedef NS_ENUM(NSInteger, BidMachineAdapterErrorCode) {
                                               code:BidMachineAdapterErrorCodeMissingSellerId
                                           userInfo:@{ NSLocalizedDescriptionKey: @"BidMachine's initialization skipped. The sellerId is empty. Ensure it is properly configured on the MoPub dashboard."} ];
         MPLogEvent([MPLogEvent error:error message:nil]);
+        [[BidMachineFactory sharedFactory] setIsSDKInitialized:NO];
         if (complete) {
             complete(error);
         }
