@@ -34,7 +34,7 @@
                                    (self.view.bounds.size.height - MOPUB_BANNER_SIZE.height) / 3,
                                    MOPUB_BANNER_SIZE.width, MOPUB_BANNER_SIZE.height);
     NSDictionary *localExtras = @{
-                                  @"seller_id": @"1",
+                                  @"seller_id": @"2",
                                   @"coppa": @"true",
                                   @"logging_enabled": @"true",
                                   @"test_mode": @"true",
@@ -43,9 +43,9 @@
                                   @"gender": @"F",
                                   @"yob": @"2000",
                                   @"keywords": @"Keyword_1,Keyword_2,Keyword_3,Keyword_4",
-                                  @"country": @"Russia",
-                                  @"city": @"Kirov",
-                                  @"zip": @"610000",
+                                  @"country": @"USA",
+                                  @"city": @"Los Angeles",
+                                  @"zip": @"90001–90084",
                                   @"sturl": @"https://store_url.com",
                                   @"paid": @"true",
                                   @"bcat": @"IAB-1,IAB-3,IAB-5",
