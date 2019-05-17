@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#if __has_include(<BidMachine/BidMachine.h>)
 #import <BidMachine/BidMachine.h>
+#endif
 
 NS_ASSUME_NONNULL_BEGIN
 

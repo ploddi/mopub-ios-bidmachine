@@ -9,8 +9,13 @@
 #import "BidMachineBannerCustomEvent.h"
 #import "BidMachineAdapterConfiguration.h"
 #import "BidMachineFactory+Request.h"
-
+#if __has_include(<BidMachine/BidMachine.h>)
 #import <BidMachine/BidMachine.h>
+#endif
+#if __has_include("MoPub.h")
+#import "MoPub.h"
+#import "MPLogging.h"
+#endif
 
 @interface BidMachineBannerCustomEvent() <BDMBannerDelegate>
 

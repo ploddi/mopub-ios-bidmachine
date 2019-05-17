@@ -6,7 +6,6 @@
 //  Copyright © 2019 BidMachineAdapterConfiguration. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #if __has_include(<MoPub/MoPub.h>)
 #import <MoPub/MoPub.h>
 #elif __has_include(<MoPubSDKFramework/MoPub.h>)

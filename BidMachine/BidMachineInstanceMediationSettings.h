@@ -6,8 +6,14 @@
 //  Copyright © 2019 BidMachine. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <mopub-ios-sdk/MoPub.h>
+#if __has_include(<MoPub/MoPub.h>)
+#import <MoPub/MoPub.h>
+#elif __has_include(<MoPubSDKFramework/MoPub.h>)
+#import <MoPubSDKFramework/MoPub.h>
+#else
+#import "MPMediationSettingsProtocol.h"
+#endif
+
 
 @interface BidMachineInstanceMediationSettings : NSObject<MPMediationSettingsProtocol>
 
