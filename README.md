@@ -88,16 +88,19 @@ self.adView = [[MPAdView alloc] initWithAdUnitId:@"AD_UNIT_ID"
                                    self.view.bounds.size.height - MOPUB_BANNER_SIZE.height,
                                    MOPUB_BANNER_SIZE.width, MOPUB_BANNER_SIZE.height);
     [self.view addSubview:self.adView];
-    NSDictionary *localExtras = @{@"coppa": @"true",
+    NSDictionary *localExtras = @{
+                                  @"seller_id": @"YOUR_SELLER_ID",
+                                  @"coppa": @"true",
                                   @"logging_enabled": @"true",
                                   @"test_mode": @"true",
+                                  @"banner_width": @"320",
                                   @"userId": @"user123",
                                   @"gender": @"F",
                                   @"yob": @"2000",
                                   @"keywords": @"Keyword_1,Keyword_2,Keyword_3,Keyword_4",
-                                  @"country": @"Russia",
-                                  @"city": @"Kirov",
-                                  @"zip": @"610000",
+                                  @"country": @"USA",
+                                  @"city": @"Los Angeles",
+                                  @"zip": @"90001–90084",
                                   @"sturl": @"https://store_url.com",
                                   @"paid": @"true",
                                   @"bcat": @"IAB-1,IAB-3,IAB-5",
