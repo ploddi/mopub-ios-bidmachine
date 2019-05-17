@@ -7,11 +7,15 @@
 //
 
 #import "BidMachineFactory+Request.h"
+
 #if __has_include(<MoPub/MoPub.h>)
 #import <MoPub/MoPub.h>
-#elif __has_include(<MoPubSDKFramework/MoPub.h>)
+#elif __has_include(<mopub-ios-sdk/MoPub.h>)
+#import <mopub-ios-sdk/MoPub.h>
+#else
 #import <MoPubSDKFramework/MoPub.h>
 #endif
+
 #if __has_include(<BidMachine/BidMachine.h>)
 #import <BidMachine/BidMachine.h>
 #endif

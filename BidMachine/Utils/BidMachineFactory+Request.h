@@ -6,7 +6,6 @@
 //  Copyright © 2019 BidMachine. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "BidMachineFactory.h"
 
 NS_ASSUME_NONNULL_BEGIN

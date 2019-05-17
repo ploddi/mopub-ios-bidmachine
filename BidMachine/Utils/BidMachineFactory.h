@@ -6,7 +6,6 @@
 //  Copyright © 2019 BidMachine. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #if __has_include(<BidMachine/BidMachine.h>)
 #import <BidMachine/BidMachine.h>
 #endif
