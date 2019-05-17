@@ -42,17 +42,15 @@
         [[BDMSdk sharedSdk] setEnableLogging:loggingEnabled];
         [[BDMSdk sharedSdk] startSessionWithSellerID:sellerId configuration:config completion:^{
             MPLogInfo(@"BidMachine SDK was successfully initialized!");
-            [[BidMachineFactory sharedFactory] setIsSDKInitialized:YES];
+            if (complete) {
+                complete(nil);
+            }
         }];
-        if (complete) {
-            complete(nil);
-        }
     } else {
         NSError * error = [NSError errorWithDomain:kAdapterErrorDomain
                                               code:BidMachineAdapterErrorCodeMissingSellerId
                                           userInfo:@{ NSLocalizedDescriptionKey: @"BidMachine's initialization skipped. The sellerId is empty. Ensure it is properly configured on the MoPub dashboard."} ];
         MPLogEvent([MPLogEvent error:error message:nil]);
-        [[BidMachineFactory sharedFactory] setIsSDKInitialized:NO];
         if (complete) {
             complete(error);
         }

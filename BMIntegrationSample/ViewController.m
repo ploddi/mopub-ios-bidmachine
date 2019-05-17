@@ -34,7 +34,7 @@
                                    (self.view.bounds.size.height - MOPUB_BANNER_SIZE.height) / 3,
                                    MOPUB_BANNER_SIZE.width, MOPUB_BANNER_SIZE.height);
     NSDictionary *localExtras = @{
-                                  @"seller_id": @"2",
+                                  @"seller_id": @"1",
                                   @"coppa": @"true",
                                   @"logging_enabled": @"true",
                                   @"test_mode": @"true",
@@ -67,7 +67,8 @@
 - (IBAction)loadInterstitialButtonTapped:(id)sender {
     self.interstitial = [MPInterstitialAdController interstitialAdControllerForAdUnitId:@"ec95ba59890d4fda90a4acf0071ed8b5"];
     self.interstitial.delegate = self;
-    NSDictionary *localExtras = @{@"seller_id": @"3",
+    NSDictionary *localExtras = @{
+                                  @"seller_id": @"1",
                                   @"coppa": @"true",
                                   @"logging_enabled": @"true",
                                   @"test_mode": @"true",
@@ -100,7 +101,7 @@
 - (IBAction)loadRewardedButtonTapped:(id)sender {
     [MPRewardedVideo setDelegate:self forAdUnitId:@"b94009cbb6b7441eb097142f1cb5e642"];
     NSDictionary *localExtras = @{
-                                  @"seller_id": @"4",
+                                  @"seller_id": @"1",
                                   @"coppa": @"true",
                                   @"logging_enabled": @"true",
                                   @"test_mode": @"true",

@@ -21,7 +21,7 @@
 
 @interface BidMachineFactory()
 
-@property (nonatomic, strong) NSString *sellerId;
+@property (nonatomic, copy) NSString *currentSellerId;
 
 @end
 
@@ -36,26 +36,25 @@
     return _sharedFactory;
 }
 
-- (void)initializeBidMachineSDKWithCustomEventInfo:(NSDictionary *)info {
-    if (!(self.sellerId == info[kBidMachineSellerId]) || !self.isSDKInitialized){
-        self.sellerId = info[kBidMachineSellerId];
-        if (self.sellerId) {
-            BOOL testModeEnabled = [info[kBidMachineTestMode] boolValue];
-            BOOL loggingEnabled = [info[kBidMachineLoggingEnabled] boolValue];
-            BDMSdkConfiguration *config = [BDMSdkConfiguration new];
-            [config setTestMode:testModeEnabled];
-            [[BDMSdk sharedSdk] setEnableLogging:loggingEnabled];
-            [[BDMSdk sharedSdk] startSessionWithSellerID:self.sellerId configuration:config completion:^{
-                MPLogInfo(@"BidMachine SDK was successfully initialized!");
-                [self setIsSDKInitialized:YES];
-            }];
-        } else {
-            NSError * error = [NSError errorWithDomain:kAdapterErrorDomain
-                                                  code:BidMachineAdapterErrorCodeMissingSellerId
-                                              userInfo:@{ NSLocalizedDescriptionKey: @"BidMachine's initialization skipped. The sellerId is empty. Ensure it is properly configured on the MoPub dashboard."} ];
-            MPLogEvent([MPLogEvent error:error message:nil]);
-            [self setIsSDKInitialized:NO];
-        }
+- (void)initializeBidMachineSDKWithCustomEventInfo:(NSDictionary *)info
+                                        completion:(void(^)(void))completion {
+    NSString *sellerID = info[kBidMachineSellerId];
+    if ([sellerID isKindOfClass:NSString.class] &&
+        ![self.currentSellerId isEqualToString:sellerID]) {
+        self.currentSellerId = sellerID;
+        
+        BOOL testModeEnabled = [info[kBidMachineTestMode] boolValue];
+        BOOL loggingEnabled = [info[kBidMachineLoggingEnabled] boolValue];
+        
+        BDMSdkConfiguration *config = [BDMSdkConfiguration new];
+        [config setTestMode:testModeEnabled];
+        
+        [[BDMSdk sharedSdk] setEnableLogging:loggingEnabled];
+        [[BDMSdk sharedSdk] startSessionWithSellerID:self.currentSellerId
+                                       configuration:config
+                                          completion:completion];
+    } else {
+        completion ? completion() : nil;
     }
 }
 

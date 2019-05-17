@@ -30,16 +30,19 @@
 }
 
 - (void)requestAdWithSize:(CGSize)size customEventInfo:(NSDictionary *)info {
-    [[BidMachineFactory sharedFactory] initializeBidMachineSDKWithCustomEventInfo:info];
-    NSMutableDictionary *extraInfo = self.localExtras ? [self.localExtras mutableCopy] : [NSMutableDictionary new];
-    [extraInfo addEntriesFromDictionary:info];
-    NSArray *priceFloors = extraInfo[@"priceFloors"];
-    BDMBannerRequest *request = [[BidMachineFactory sharedFactory] setupBannerRequestWithSize:size
-                                                                                    extraInfo:extraInfo
-                                                                                     location:self.delegate.location
-                                                                                  priceFloors:priceFloors];
-    [self.bannerView setFrame:CGRectMake(0, 0, size.width, size.height)];
-    [self.bannerView populateWithRequest:request];
+    __weak typeof(self) weakSelf = self;
+    [[BidMachineFactory sharedFactory] initializeBidMachineSDKWithCustomEventInfo:info completion:^{
+        NSMutableDictionary *extraInfo = weakSelf.localExtras.mutableCopy ?: [NSMutableDictionary new];
+        [extraInfo addEntriesFromDictionary:info];
+        
+        NSArray *priceFloors = extraInfo[@"priceFloors"];
+        BDMBannerRequest *request = [[BidMachineFactory sharedFactory] setupBannerRequestWithSize:size
+                                                                                        extraInfo:extraInfo
+                                                                                         location:weakSelf.delegate.location
+                                                                                      priceFloors:priceFloors];
+        [weakSelf.bannerView setFrame:CGRectMake(0, 0, size.width, size.height)];
+        [weakSelf.bannerView populateWithRequest:request];
+    }];
 }
 
 #pragma mark - Lazy

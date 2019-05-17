@@ -29,14 +29,17 @@
 }
 
 - (void)requestInterstitialWithCustomEventInfo:(NSDictionary *)info {
-    [[BidMachineFactory sharedFactory] initializeBidMachineSDKWithCustomEventInfo:info];
-    NSMutableDictionary *extraInfo = self.localExtras ? [self.localExtras mutableCopy] : [NSMutableDictionary new];
-    [extraInfo addEntriesFromDictionary:info];
-    NSArray *priceFloors = extraInfo[@"priceFloors"];
-    BDMInterstitialRequest *request = [[BidMachineFactory sharedFactory] interstitialRequestWithExtraInfo:extraInfo
-                                                                                                 location:self.delegate.location
-                                                                                              priceFloors:priceFloors];
-    [self.interstitial populateWithRequest:request];
+    __weak typeof(self) weakSelf = self;
+    [[BidMachineFactory sharedFactory] initializeBidMachineSDKWithCustomEventInfo:info completion:^{
+        NSMutableDictionary *extraInfo = weakSelf.localExtras.mutableCopy ?: [NSMutableDictionary new];
+        [extraInfo addEntriesFromDictionary:info];
+        
+        NSArray *priceFloors = extraInfo[@"priceFloors"];
+        BDMInterstitialRequest *request = [[BidMachineFactory sharedFactory] interstitialRequestWithExtraInfo:extraInfo
+                                                                                                     location:weakSelf.delegate.location
+                                                                                                  priceFloors:priceFloors];
+        [weakSelf.interstitial populateWithRequest:request];
+    }];
 }
 
 - (void)showInterstitialFromRootViewController:(UIViewController *)rootViewController {

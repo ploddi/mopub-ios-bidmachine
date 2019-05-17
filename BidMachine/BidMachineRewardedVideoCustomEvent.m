@@ -29,15 +29,18 @@
 }
 
 - (void)requestRewardedVideoWithCustomEventInfo:(NSDictionary *)info {
-    [[BidMachineFactory sharedFactory] initializeBidMachineSDKWithCustomEventInfo:info];
-    NSMutableDictionary *extraInfo = self.localExtras ? [self.localExtras mutableCopy] : [NSMutableDictionary new];
-    [extraInfo addEntriesFromDictionary:info];
-    NSArray *priceFloors = extraInfo[@"priceFloors"];
-    CLLocation *location = self.localExtras[@"location"];
-    BDMRewardedRequest *request = [[BidMachineFactory sharedFactory] rewardedRequestWithExtraInfo:extraInfo
-                                                                                         location:location
-                                                                                      priceFloors:priceFloors];
-    [self.rewarded populateWithRequest:request];
+    __weak typeof(self) weakSelf = self;
+    [[BidMachineFactory sharedFactory] initializeBidMachineSDKWithCustomEventInfo:info completion:^{
+        NSMutableDictionary *extraInfo = weakSelf.localExtras.mutableCopy ?: [NSMutableDictionary new];
+        [extraInfo addEntriesFromDictionary:info];
+        
+        NSArray *priceFloors = extraInfo[@"priceFloors"];
+        CLLocation *location = extraInfo[@"location"];
+        BDMRewardedRequest *request = [[BidMachineFactory sharedFactory] rewardedRequestWithExtraInfo:extraInfo
+                                                                                             location:location
+                                                                                          priceFloors:priceFloors];
+        [weakSelf.rewarded populateWithRequest:request];
+    }];
 }
 
 - (BOOL)hasAdAvailable {

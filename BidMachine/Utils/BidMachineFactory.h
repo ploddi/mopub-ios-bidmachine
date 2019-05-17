@@ -15,11 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface BidMachineFactory : NSObject
 
 + (instancetype)sharedFactory;
-- (void)initializeBidMachineSDKWithCustomEventInfo:(NSDictionary *)info;
+
+- (void)initializeBidMachineSDKWithCustomEventInfo:(NSDictionary *)info
+                                        completion:(void(^)(void))completion;
 - (BDMTargeting *)setupTargetingWithExtraInfo:(NSDictionary *)extraInfo andLocation:(CLLocation * _Nullable)location;
 - (NSArray<BDMPriceFloor *> *)makePriceFloorsWithPriceFloors:(NSArray *)priceFloors;
-
-@property (nonatomic, assign) BOOL isSDKInitialized;
 
 @end
 
