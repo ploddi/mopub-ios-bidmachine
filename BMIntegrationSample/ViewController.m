@@ -67,7 +67,7 @@
 - (IBAction)loadInterstitialButtonTapped:(id)sender {
     self.interstitial = [MPInterstitialAdController interstitialAdControllerForAdUnitId:@"ec95ba59890d4fda90a4acf0071ed8b5"];
     self.interstitial.delegate = self;
-    NSDictionary *localExtras = @{@"seller_id": @"1",
+    NSDictionary *localExtras = @{@"seller_id": @"3",
                                   @"coppa": @"true",
                                   @"logging_enabled": @"true",
                                   @"test_mode": @"true",
@@ -100,7 +100,7 @@
 - (IBAction)loadRewardedButtonTapped:(id)sender {
     [MPRewardedVideo setDelegate:self forAdUnitId:@"b94009cbb6b7441eb097142f1cb5e642"];
     NSDictionary *localExtras = @{
-                                  @"seller_id": @"1",
+                                  @"seller_id": @"4",
                                   @"coppa": @"true",
                                   @"logging_enabled": @"true",
                                   @"test_mode": @"true",
