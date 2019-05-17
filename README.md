@@ -123,7 +123,7 @@ But also you can receive extra data from server. It will be sent in (NSDictionar
 
 ```
 {
-    "seller_id": "1",
+    "seller_id": "YOUR_SELLER_ID",
     "coppa": "true",
     "logging_enabled": "true",
     "test_mode": "true",
@@ -132,9 +132,9 @@ But also you can receive extra data from server. It will be sent in (NSDictionar
     "gender": "F",
     "yob": "2000",
     "keywords": "Keyword_1,Keyword_2,Keyword_3,Keyword_4",
-    "country": "Russia",
-    "city": "Kirov",
-    "zip": "610000",
+    "country": "USA",
+    "city": "Los Angeles",
+    "zip": "90001–90084",
     "sturl": "https://store_url.com",
     "paid": "true",
     "bcat": "IAB-1,IAB-3,IAB-5",
@@ -158,18 +158,19 @@ With local extra data:
 ```
     self.interstitial = [MPInterstitialAdController interstitialAdControllerForAdUnitId:@"AD_UNIT_ID"];
     self.interstitial.delegate = self;
-    NSDictionary *localExtras = @{@"seller_id": @"1",
+    NSDictionary *localExtras = @{
+                                  @"seller_id": @"YOUR_SELLER_ID",
                                   @"coppa": @"true",
                                   @"logging_enabled": @"true",
                                   @"test_mode": @"true",
-                                  @"ad_content_type": @"All",
+                                  @"banner_width": @"320",
                                   @"userId": @"user123",
                                   @"gender": @"F",
                                   @"yob": @"2000",
                                   @"keywords": @"Keyword_1,Keyword_2,Keyword_3,Keyword_4",
-                                  @"country": @"Russia",
-                                  @"city": @"Kirov",
-                                  @"zip": @"610000",
+                                  @"country": @"USA",
+                                  @"city": @"Los Angeles",
+                                  @"zip": @"90001–90084",
                                   @"sturl": @"https://store_url.com",
                                   @"paid": @"true",
                                   @"bcat": @"IAB-1,IAB-3,IAB-5",
@@ -192,18 +193,18 @@ Servers extra data:
 
 ```
 {
-    "seller_id": "1",
+    "seller_id": "YOUR_SELLER_ID",
     "coppa": "true",
     "logging_enabled": "true",
     "test_mode": "true",
-    "ad_content_type": "All",
+    "banner_width": "320",
     "userId": "user123",
     "gender": "F",
     "yob": "2000",
     "keywords": "Keyword_1,Keyword_2,Keyword_3,Keyword_4",
-    "country": "Russia",
-    "city": "Kirov",
-    "zip": "610000",
+    "country": "USA",
+    "city": "Los Angeles",
+    "zip": "90001–90084",
     "sturl": "https://store_url.com",
     "paid": "true",
     "bcat": "IAB-1,IAB-3,IAB-5",
@@ -226,17 +227,19 @@ With local extra data:
 
 ```
 [MPRewardedVideo setDelegate:self forAdUnitId:@"AD_UNIT_ID"];
-    NSDictionary *localExtras = @{@"seller_id": @"1",
+    NSDictionary *localExtras = @{
+                                  @"seller_id": @"YOUR_SELLER_ID",
                                   @"coppa": @"true",
                                   @"logging_enabled": @"true",
                                   @"test_mode": @"true",
+                                  @"banner_width": @"320",
                                   @"userId": @"user123",
                                   @"gender": @"F",
                                   @"yob": @"2000",
                                   @"keywords": @"Keyword_1,Keyword_2,Keyword_3,Keyword_4",
-                                  @"country": @"Russia",
-                                  @"city": @"Kirov",
-                                  @"zip": @"610000",
+                                  @"country": @"USA",
+                                  @"city": @"Los Angeles",
+                                  @"zip": @"90001–90084",
                                   @"sturl": @"https://store_url.com",
                                   @"paid": @"true",
                                   @"bcat": @"IAB-1,IAB-3,IAB-5",
@@ -259,17 +262,18 @@ Extra data from server:
 
 ```
 {
-    "seller_id": "1",
+    "seller_id": "YOUR_SELLER_ID",
     "coppa": "true",
     "logging_enabled": "true",
     "test_mode": "true",
+    "banner_width": "320",
     "userId": "user123",
     "gender": "F",
     "yob": "2000",
     "keywords": "Keyword_1,Keyword_2,Keyword_3,Keyword_4",
-    "country": "Russia",
-    "city": "Kirov",
-    "zip": "610000",
+    "country": "USA",
+    "city": "Los Angeles",
+    "zip": "90001–90084",
     "sturl": "https://store_url.com",
     "paid": "true",
     "bcat": "IAB-1,IAB-3,IAB-5",
