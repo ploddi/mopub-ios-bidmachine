@@ -27,7 +27,8 @@
     if (self.adView) {
         [self.adView removeFromSuperview];
     }
-    self.adView = [[MPAdView alloc] initWithAdUnitId:@"1832ce06de91424f8f81f9f5c77f7efd"
+    // You can use test ad unit id - 1832ce06de91424f8f81f9f5c77f7efd - to test banner ad.
+    self.adView = [[MPAdView alloc] initWithAdUnitId:@"YOUR_AD_UNIT_ID"
                                                 size:MOPUB_BANNER_SIZE];
     self.adView.delegate = self;
     self.adView.frame = CGRectMake((self.view.bounds.size.width - MOPUB_BANNER_SIZE.width) / 2,
@@ -65,7 +66,8 @@
 }
 
 - (IBAction)loadInterstitialButtonTapped:(id)sender {
-    self.interstitial = [MPInterstitialAdController interstitialAdControllerForAdUnitId:@"ec95ba59890d4fda90a4acf0071ed8b5"];
+    // You can use test ad unit id - ec95ba59890d4fda90a4acf0071ed8b5 - to test interstitial ad.
+    self.interstitial = [MPInterstitialAdController interstitialAdControllerForAdUnitId:@"YOUR_AD_UNIT_ID"];
     self.interstitial.delegate = self;
     NSDictionary *localExtras = @{
                                   @"seller_id": @"1",
@@ -77,9 +79,9 @@
                                   @"gender": @"F",
                                   @"yob": @"2000",
                                   @"keywords": @"Keyword_1,Keyword_2,Keyword_3,Keyword_4",
-                                  @"country": @"Russia",
-                                  @"city": @"Kirov",
-                                  @"zip": @"610000",
+                                  @"country": @"USA",
+                                  @"city": @"Los Angeles",
+                                  @"zip": @"90001–90084",
                                   @"sturl": @"https://store_url.com",
                                   @"paid": @"true",
                                   @"bcat": @"IAB-1,IAB-3,IAB-5",
@@ -99,7 +101,8 @@
 }
 
 - (IBAction)loadRewardedButtonTapped:(id)sender {
-    [MPRewardedVideo setDelegate:self forAdUnitId:@"b94009cbb6b7441eb097142f1cb5e642"];
+    // You can use test ad unit id - b94009cbb6b7441eb097142f1cb5e642 - to test rewarded ad.
+    [MPRewardedVideo setDelegate:self forAdUnitId:@"YOUR_AD_UNIT_ID"];
     NSDictionary *localExtras = @{
                                   @"seller_id": @"1",
                                   @"coppa": @"true",
@@ -109,9 +112,9 @@
                                   @"gender": @"F",
                                   @"yob": @"2000",
                                   @"keywords": @"Keyword_1,Keyword_2,Keyword_3,Keyword_4",
-                                  @"country": @"Russia",
-                                  @"city": @"Kirov",
-                                  @"zip": @"610000",
+                                  @"country": @"USA",
+                                  @"city": @"Los Angeles",
+                                  @"zip": @"90001–90084",
                                   @"sturl": @"https://store_url.com",
                                   @"paid": @"true",
                                   @"bcat": @"IAB-1,IAB-3,IAB-5",
@@ -126,7 +129,7 @@
                                                     @1002
                                                     ]
                                   };
-    [MPRewardedVideo loadRewardedVideoAdWithAdUnitID:@"b94009cbb6b7441eb097142f1cb5e642" keywords:nil userDataKeywords:nil location:nil customerId:nil mediationSettings:nil localExtras:localExtras];
+    [MPRewardedVideo loadRewardedVideoAdWithAdUnitID:@"YOUR_AD_UNIT_ID" keywords:nil userDataKeywords:nil location:nil customerId:nil mediationSettings:nil localExtras:localExtras];
 }
 
 - (UIViewController *)viewControllerForPresentingModalView {
@@ -144,7 +147,7 @@
 
 - (void)rewardedVideoAdDidLoadForAdUnitID:(NSString *)adUnitID {
     NSLog(@"Rewarded video did load ad for ad unit id %@", adUnitID);
-    [MPRewardedVideo presentRewardedVideoAdForAdUnitID:@"b94009cbb6b7441eb097142f1cb5e642" fromViewController:self withReward:nil];
+    [MPRewardedVideo presentRewardedVideoAdForAdUnitID:adUnitID fromViewController:self withReward:nil];
 }
 
 - (void)interstitialDidLoadAd:(MPInterstitialAdController *)interstitial {
