@@ -38,7 +38,7 @@
 
 - (void)initializeBidMachineSDKWithCustomEventInfo:(NSDictionary *)info
                                         completion:(void(^)(void))completion {
-    NSString *sellerID = info[kBidMachineSellerId];
+    NSString *sellerID = [self transfromSellerID:info[kBidMachineSellerId]];
     if ([sellerID isKindOfClass:NSString.class] &&
         ![self.currentSellerId isEqualToString:sellerID]) {
         self.currentSellerId = sellerID;
@@ -114,6 +114,16 @@
         userGender = kBDMUserGenderUnknown;
     }
     return userGender;
+}
+
+- (NSString *)transfromSellerID:(id)sellerId {
+    NSString *stringSellerId;
+    if ([sellerId isKindOfClass:NSString.class] && [sellerId integerValue]) {
+        stringSellerId = sellerId;
+    } else if ([sellerId isKindOfClass:NSNumber.class]) {
+        stringSellerId = [sellerId stringValue];
+    }
+    return stringSellerId;
 }
 
 @end

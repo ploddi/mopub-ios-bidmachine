@@ -33,7 +33,7 @@
 
 - (void)initializeNetworkWithConfiguration:(NSDictionary<NSString *,id> *)configuration
                                   complete:(void (^)(NSError *))complete {
-    NSString *sellerId = configuration[kBidMachineSellerId];
+    NSString *sellerId = [[BidMachineFactory sharedFactory] transfromSellerID:configuration[kBidMachineSellerId]];
     BOOL testModeEnabled = [configuration[kBidMachineTestMode] boolValue];
     BOOL loggingEnabled = [configuration[kBidMachineLoggingEnabled] boolValue];
     if (sellerId) {

@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
                                         completion:(void(^)(void))completion;
 - (BDMTargeting *)setupTargetingWithExtraInfo:(NSDictionary *)extraInfo andLocation:(CLLocation * _Nullable)location;
 - (NSArray<BDMPriceFloor *> *)makePriceFloorsWithPriceFloors:(NSArray *)priceFloors;
+- (NSString *)transfromSellerID:(id)sellerId;
 
 @end
 
